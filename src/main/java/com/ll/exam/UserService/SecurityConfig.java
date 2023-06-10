@@ -16,12 +16,14 @@ public class SecurityConfig {
   @Bean
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests().requestMatchers(
-        new AntPathRequestMatcher("/h2-console/**")).permitAll()
+            new AntPathRequestMatcher("/**")).permitAll()
+        .and()
+        .csrf().ignoringRequestMatchers(
+            new AntPathRequestMatcher("/h2-console/**"))
         .and()
         .headers()
         .addHeaderWriter(new XFrameOptionsHeaderWriter(
-            XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN
-        ));
+            XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
 
     return http.build();
   }
