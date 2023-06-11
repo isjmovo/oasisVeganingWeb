@@ -1,4 +1,4 @@
-package com.ll.exam.UserService;
+package com.ll.exam.UserService.base;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

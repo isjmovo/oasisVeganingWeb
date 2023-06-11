@@ -1,6 +1,6 @@
 package com.ll.exam.UserService.user;
 
-import com.ll.exam.UserService.RepositoryUtil;
+import com.ll.exam.UserService.base.RepositoryUtil;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
