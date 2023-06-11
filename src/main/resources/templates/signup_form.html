@@ -11,6 +11,10 @@
         <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
         <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input type="text" th:field="*{name}" class="form-control">
+        </div>
+        <div class="mb-3">
             <label class="form-label">사용자ID</label>
             <input type="text" th:field="*{username}" class="form-control">
         </div>
@@ -25,6 +29,18 @@
         <div class="mb-3">
             <label class="form-label">이메일</label>
             <input type="email" th:field="*{email}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">전화번호</label>
+            <input type="text" th:field="*{phone}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">주소</label>
+            <input type="text" th:field="*{address}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">알레르기 정보</label>
+            <input type="text" th:field="*{allergy}" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">회원가입</button>
     </form>

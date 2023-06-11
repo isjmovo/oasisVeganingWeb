@@ -2,7 +2,6 @@ package com.ll.exam.UserService.user;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,14 +32,14 @@ public class UserController {
     }
 
     try {
-      userService.create(userCreateForm.getUsername(),
-          userCreateForm.getEmail(), userCreateForm.getPassword1());
+      userService.create(userCreateForm.getName(), userCreateForm.getUsername(),
+          userCreateForm.getEmail(), userCreateForm.getPassword1(), userCreateForm.getPhone(), userCreateForm.getAddress(), userCreateForm.getAllergy());
     } catch (SignupUsernameDuplicatedException e) {
       bindingResult.reject("SignupUsernameDuplicated", e.getMessage());
 
       return "signup_form";
-    } catch (SignupEmailDuplicatedException e) {
-      bindingResult.reject("SignupEmailDuplicated", e.getMessage());
+    } catch (SignupPhoneDuplicatedException e) {
+      bindingResult.reject("SignupPhoneDuplicated", e.getMessage());
 
       return "signup_form";
     }
