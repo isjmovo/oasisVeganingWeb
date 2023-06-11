@@ -29,6 +29,14 @@
             copyright all rights reserved
         </div>
     </footer>
+
+    <script>
+        $('select[value]').each((index, node) => {
+            const $select = $(node);
+            const value = $(node).attr("value");
+            $select.find(`option[value="${value}"]`).prop("selected", true);
+        });
+    </script>
 </body>
 
 </html>
