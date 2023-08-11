@@ -2,7 +2,7 @@
 
 <div layout:fragment="content">
     <img src="https://cdn.pixabay.com/photo/2019/01/21/21/35/salad-3946916_1280.jpg" class="z-1 position-absolute"
-        style="width: 100%; height: fit-content;">
+        style="width: 100%; height: auto;">
 
     <div>
         <div class="position-absolute top-50 start-50 translate-middle">
@@ -16,7 +16,7 @@
                         <form th:action="@{/user/login}" method="post" class="w-75 p-3">
                             <div th:if="${param.error}">
                                 <div class="alert alert-danger">
-                                    아이디 또는 비밀번호를 확인해 주세요.
+                                    아이디 또는 비밀번호를 확인해주세요.
                                 </div>
                             </div>
 
