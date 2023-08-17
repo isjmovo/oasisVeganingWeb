@@ -1,10 +1,10 @@
-package com.ll.exam.UserService;
+package com.ll.exam.oasisVeganingWeb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserServiceApplicationTests {
+class oasisVeganingWebApplicationTests {
 
 	@Test
 	void contextLoads() {

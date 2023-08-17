@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.user;
+package com.ll.exam.oasisVeganingWeb.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

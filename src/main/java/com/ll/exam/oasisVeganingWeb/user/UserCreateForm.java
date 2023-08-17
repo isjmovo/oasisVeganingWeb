@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.user;
+package com.ll.exam.oasisVeganingWeb.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

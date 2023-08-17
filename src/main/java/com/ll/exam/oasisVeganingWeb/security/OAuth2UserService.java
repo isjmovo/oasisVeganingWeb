@@ -1,9 +1,9 @@
-package com.ll.exam.UserService.security;
+package com.ll.exam.oasisVeganingWeb.security;
 
-import com.ll.exam.UserService.exception.DataNotFoundException;
-import com.ll.exam.UserService.exception.OAuthTypeMatchNotFoundException;
-import com.ll.exam.UserService.user.SiteUser;
-import com.ll.exam.UserService.user.UserRepository;
+import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
+import com.ll.exam.oasisVeganingWeb.exception.OAuthTypeMatchNotFoundException;
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
+import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.lens;
+package com.ll.exam.oasisVeganingWeb.lens;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

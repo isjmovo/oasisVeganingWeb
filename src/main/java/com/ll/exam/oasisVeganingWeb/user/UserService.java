@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.user;
+package com.ll.exam.oasisVeganingWeb.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;

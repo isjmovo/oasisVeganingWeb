@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.user;
+package com.ll.exam.oasisVeganingWeb.user;
 
 public class SignupUsernameDuplicatedException extends RuntimeException {
   public SignupUsernameDuplicatedException(String message) {

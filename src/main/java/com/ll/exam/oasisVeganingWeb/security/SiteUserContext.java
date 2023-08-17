@@ -1,6 +1,6 @@
-package com.ll.exam.UserService.security;
+package com.ll.exam.oasisVeganingWeb.security;
 
-import com.ll.exam.UserService.user.SiteUser;
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;

@@ -1,7 +1,7 @@
-package com.ll.exam.UserService;
+package com.ll.exam.oasisVeganingWeb;
 
-import com.ll.exam.UserService.user.UserRepository;
-import com.ll.exam.UserService.user.UserService;
+import com.ll.exam.oasisVeganingWeb.user.UserRepository;
+import com.ll.exam.oasisVeganingWeb.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

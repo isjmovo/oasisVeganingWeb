@@ -1,6 +1,5 @@
-package com.ll.exam.UserService.security;
+package com.ll.exam.oasisVeganingWeb.security;
 
-import com.ll.exam.UserService.security.OAuth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

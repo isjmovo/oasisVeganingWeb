@@ -1,4 +1,4 @@
-package com.ll.exam.UserService.exception;
+package com.ll.exam.oasisVeganingWeb.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
