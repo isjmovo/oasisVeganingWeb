@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 class VeganingWebApplicationTests {
 	@Autowired
@@ -30,5 +32,11 @@ class VeganingWebApplicationTests {
 		c2.setContent("비건 도시락");
 		c2.setCreateDate(LocalDateTime.now());
 		this.communityRepository.save(c2);
+
+		assertThat(c1.getId()).isGreaterThan(0);
+		assertThat(c2.getId()).isGreaterThan(c1.getId());
+
+		System.out.println("c1 id : " + c1.getId());
+		System.out.println("c2 id : " + c2.getId());
 	}
 }
