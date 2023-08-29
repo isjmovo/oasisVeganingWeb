@@ -47,4 +47,10 @@ class VeganingWebApplicationTests {
 		Community c = all.get(0);
 		assertEquals("비건 햄버거 먹어봤습니다!", c.getSubject());
 	}
+
+	@Test
+	void testJpa3() {
+		Community c = communityRepository.findBySubject("비건 햄버거 먹어봤습니다!");
+		assertEquals(1, c.getId());
+	}
 }
