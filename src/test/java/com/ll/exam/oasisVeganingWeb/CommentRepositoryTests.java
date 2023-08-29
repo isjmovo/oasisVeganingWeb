@@ -4,6 +4,7 @@ import com.ll.exam.oasisVeganingWeb.Community.Comment;
 import com.ll.exam.oasisVeganingWeb.Community.CommentRepository;
 import com.ll.exam.oasisVeganingWeb.Community.Community;
 import com.ll.exam.oasisVeganingWeb.Community.CommunityRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,22 @@ public class CommentRepositoryTests {
   private CommunityRepository communityRepository;
   @Autowired
   private CommentRepository commentRepository;
+  private long lastSampleData;
+
+  @BeforeEach
+  void beforeEach() {
+    clearData();
+    createSampleData();
+  }
+
+  private void createSampleData() {
+  }
+
+  private void clearData() {
+    communityRepository.disableForeignKeyCheck();
+    commentRepository.truncate();
+    communityRepository.enableForeignKeyCheck();
+  }
 
   @Test
   void 저장() {
