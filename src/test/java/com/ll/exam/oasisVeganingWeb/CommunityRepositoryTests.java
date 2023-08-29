@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CommunityRepositoryTests {
@@ -70,5 +72,45 @@ public class CommunityRepositoryTests {
     communityRepository.delete(q);
 
     assertThat(communityRepository.count()).isEqualTo(lastSampleDataId - 1);
+  }
+
+  @Test
+  void 수정() {
+    assertThat(communityRepository.count()).isEqualTo(lastSampleDataId);
+
+    Community c = communityRepository.findById(1).get();
+    c.setSubject("수정된 제목");
+    communityRepository.save(c);
+
+    c = communityRepository.findById(1).get();
+    assertThat(c.getSubject()).isEqualTo("수정된 제목");
+  }
+
+  @Test
+  void findAll() {
+    List<Community> all = communityRepository.findAll();
+    assertThat(all.size()).isEqualTo(lastSampleDataId);
+
+    Community c = all.get(0);
+    assertThat(c.getSubject()).isEqualTo("비건 햄버거 먹어봤습니다!");
+  }
+
+  @Test
+  void findBySubject() {
+    Community c = communityRepository.findBySubject("비건 햄버거 먹어봤습니다!");
+    assertThat(c.getId()).isEqualTo(1);
+  }
+
+  @Test
+  void findBySubjectAndContent() {
+    Community c = communityRepository.findBySubjectAndContent("비건 햄버거 먹어봤습니다!", "비건 햄버거");
+    assertThat(c.getId()).isEqualTo(1);
+  }
+
+  @Test
+  void findBySubjectLike() {
+    List<Community> cList = communityRepository.findBySubjectLike("비건%");
+    Community c = cList.get(0);
+    assertThat(c.getSubject()).isEqualTo("비건 햄버거 먹어봤습니다!");
   }
 }
