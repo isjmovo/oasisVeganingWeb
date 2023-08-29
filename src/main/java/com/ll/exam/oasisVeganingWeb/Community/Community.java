@@ -23,6 +23,6 @@ public class Community {
 
   private LocalDateTime createDate;
 
-  @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+  @OneToMany(mappedBy = "community", cascade = CascadeType.REMOVE)
   private List<Comment> commentList;
 }

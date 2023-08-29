@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class oasisVeganingWebApplication {
+public class VeganingWebApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(oasisVeganingWebApplication.class, args);
+		SpringApplication.run(VeganingWebApplication.class, args);
 	}
 }
