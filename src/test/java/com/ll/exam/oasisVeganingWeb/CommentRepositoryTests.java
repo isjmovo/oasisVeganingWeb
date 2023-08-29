@@ -28,9 +28,7 @@ public class CommentRepositoryTests {
   private void clearData() {
     CommunityRepositoryTests.clearData(communityRepository);
 
-    communityRepository.disableForeignKeyCheck();
-    commentRepository.truncate();
-    communityRepository.enableForeignKeyCheck();
+    commentRepository.truncateTable();
   }
 
   private void createSampleData() {

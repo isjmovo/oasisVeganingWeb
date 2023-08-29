@@ -46,9 +46,7 @@ public class CommunityRepositoryTests {
   }
 
   public static void clearData(CommunityRepository communityRepository) {
-    communityRepository.disableForeignKeyCheck();
-    communityRepository.truncate();
-    communityRepository.enableForeignKeyCheck();
+    communityRepository.truncateTable();
   }
 
   private void clearData() {
