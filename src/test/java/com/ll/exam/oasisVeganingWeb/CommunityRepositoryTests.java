@@ -25,26 +25,34 @@ public class CommunityRepositoryTests {
     createSampleData();
   }
 
-  private void createSampleData() {
+  public static long createSampleData(CommunityRepository communityRepository) {
     Community c1 = new Community();
     c1.setSubject("비건 햄버거 먹어봤습니다!");
     c1.setContent("비건 햄버거");
     c1.setCreateDate(LocalDateTime.now());
-    this.communityRepository.save(c1);
+    communityRepository.save(c1);
 
     Community c2 = new Community();
     c2.setSubject("비건 도시락 쉽네요");
     c2.setContent("비건 도시락");
     c2.setCreateDate(LocalDateTime.now());
-    this.communityRepository.save(c2);
+    communityRepository.save(c2);
     
-    lastSampleDataId = c2.getId();
+    return c2.getId();
   }
 
-  private void clearData() {
+  private void createSampleData() {
+    lastSampleDataId = createSampleData(communityRepository);
+  }
+
+  public static void clearData(CommunityRepository communityRepository) {
     communityRepository.disableForeignKeyCheck();
     communityRepository.truncate();
     communityRepository.enableForeignKeyCheck();
+  }
+
+  private void clearData() {
+    clearData(communityRepository);
   }
 
   @Test

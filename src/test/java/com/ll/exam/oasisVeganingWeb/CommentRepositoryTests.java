@@ -25,25 +25,16 @@ public class CommentRepositoryTests {
     createSampleData();
   }
 
-  private void createSampleData() {
-    Community c1 = new Community();
-    c1.setSubject("비건 햄버거 먹어봤습니다!");
-    c1.setContent("비건 햄버거");
-    c1.setCreateDate(LocalDateTime.now());
-    communityRepository.save(c1);
-
-    Community c2 = new Community();
-    c2.setSubject("비건 도시락 쉽네요");
-    c2.setContent("비건 도시락");
-    c2.setCreateDate(LocalDateTime.now());
-    communityRepository.save(c2);
-  }
-
   private void clearData() {
+    CommunityRepositoryTests.clearData(communityRepository);
+
     communityRepository.disableForeignKeyCheck();
-    communityRepository.truncate();
     commentRepository.truncate();
     communityRepository.enableForeignKeyCheck();
+  }
+
+  private void createSampleData() {
+    CommunityRepositoryTests.createSampleData(communityRepository);
   }
 
   @Test
