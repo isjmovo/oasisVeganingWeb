@@ -19,5 +19,6 @@ public class Comment {
 
   private LocalDateTime createDate;
 
+  @ManyToOne
   private Community community;
 }
