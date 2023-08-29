@@ -37,7 +37,9 @@ class VeganingWebApplicationTests {
 		c2.setCreateDate(LocalDateTime.now());
 		this.communityRepository.save(c2);
 
+		communityRepository.disableForeignKeyCheck();
 		communityRepository.truncate();
+		communityRepository.enableForeignKeyCheck();
 	}
 
 	@Test
