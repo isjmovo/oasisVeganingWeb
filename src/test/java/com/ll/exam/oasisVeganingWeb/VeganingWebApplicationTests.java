@@ -8,9 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class VeganingWebApplicationTests {
@@ -64,5 +66,23 @@ class VeganingWebApplicationTests {
 		List<Community> cList = communityRepository.findBySubjectLike("비건%");
 		Community c = cList.get(0);
 		assertEquals("비건 햄버거 먹어봤습니다!", c.getSubject());
+	}
+
+	void testJpa6() {
+		Optional<Community> oc = communityRepository.findById(1);
+		assertTrue(oc.isPresent());
+		Community c = oc.orElse(null);
+		c.setSubject("수정된 제목");
+		this.communityRepository.save(c);
+	}
+
+	@Test
+	void testJpa7() {
+		assertEquals(2, communityRepository.count());
+		Optional<Community> oc = communityRepository.findById(1);
+		assertTrue(oc.isPresent());
+		Community c = oc.get();
+		this.communityRepository.delete(c);
+		assertEquals(1, communityRepository.count());
 	}
 }
