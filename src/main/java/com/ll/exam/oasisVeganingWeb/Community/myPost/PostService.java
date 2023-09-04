@@ -1,0 +1,53 @@
+package com.ll.exam.oasisVeganingWeb.Community.myPost;
+
+import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class PostService {
+  private final PostRepository postRepository;
+
+  public Page<MyPost> getList(int page) {
+    List<Sort.Order> sorts = new ArrayList<>();
+    sorts.add(Sort.Order.desc("createDate"));
+
+    Pageable pageable = PageRequest.of(page, 9, Sort.by(sorts));
+
+    return postRepository.findAll(pageable);
+  }
+
+  public MyPost getMyPost(long id) {
+    return postRepository.findById(id).orElseThrow(() -> new DataNotFoundException("no %d my_post not found".formatted(id)));
+  }
+
+  public void create(String subject, String content, SiteUser author) {
+    MyPost p = new MyPost();
+    p.setSubject(subject);
+    p.setContent(content);
+    p.setAuthor(author);
+    p.setCreateDate(LocalDateTime.now());
+    postRepository.save(p);
+  }
+
+  public void modify(MyPost myPost, String subject, String content) {
+    myPost.setSubject(subject);
+    myPost.setContent(content);
+    myPost.setModifyDate(LocalDateTime.now());
+    postRepository.save(myPost);
+  }
+
+  public void delete (MyPost myPost) {
+    this.postRepository.delete(myPost);
+  }
+}

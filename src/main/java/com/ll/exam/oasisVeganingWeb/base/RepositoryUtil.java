@@ -14,11 +14,11 @@ public interface RepositoryUtil {
   @Modifying
   @Query(value = "SET FOREIGN_KEY_CHECKS = 1", nativeQuery = true)
   void enableForeignKeyCheck();
-  
+
   default void truncateTable() {
-    disableForeignKeyCheck();
+//    disableForeignKeyCheck();
     truncate();
-    enableForeignKeyCheck();
+//    enableForeignKeyCheck();
   }
 
   void truncate();

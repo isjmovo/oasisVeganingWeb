@@ -1,5 +1,6 @@
 package com.ll.exam.oasisVeganingWeb.user;
 
+import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,5 +33,9 @@ public class UserService {
     }
 
     return user;
+  }
+
+  public SiteUser getUser(String username) {
+    return userRepository.findByUsername(username).orElseThrow(() -> new DataNotFoundException("siteuser not found"));
   }
 }

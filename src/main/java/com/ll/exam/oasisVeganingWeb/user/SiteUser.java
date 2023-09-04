@@ -31,4 +31,8 @@ public class SiteUser {
   private String address;
 
   private String allergy;
+
+  public SiteUser(long id) {
+    this.id = id;
+  }
 }

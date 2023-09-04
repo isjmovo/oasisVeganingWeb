@@ -1,5 +1,7 @@
-package com.ll.exam.oasisVeganingWeb.Community;
+package com.ll.exam.oasisVeganingWeb.Community.comment;
 
+import com.ll.exam.oasisVeganingWeb.Community.myPost.MyPost;
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,13 +14,17 @@ import java.time.LocalDateTime;
 public class Comment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Column(columnDefinition = "TEXT")
   private String content;
 
   private LocalDateTime createDate;
+  private LocalDateTime modifyDate;
 
   @ManyToOne
-  private Community community;
+  private MyPost my_post;
+
+  @ManyToOne
+  private SiteUser author;
 }
