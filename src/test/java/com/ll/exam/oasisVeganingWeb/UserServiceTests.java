@@ -1,8 +1,8 @@
 package com.ll.exam.oasisVeganingWeb;
 
-import com.ll.exam.oasisVeganingWeb.Community.comment.Comment;
 import com.ll.exam.oasisVeganingWeb.Community.comment.CommentRepository;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.PostRepository;
+import com.ll.exam.oasisVeganingWeb.recipe.RecipeRepository;
 import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import com.ll.exam.oasisVeganingWeb.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +21,8 @@ public class UserServiceTests {
   private PostRepository postRepository;
   @Autowired
   private CommentRepository commentRepository;
+  @Autowired
+  private RecipeRepository recipeRepository;
 
   @BeforeEach
   void beforeEach() {
@@ -37,7 +39,10 @@ public class UserServiceTests {
     createSampleData(userService);
   }
 
-  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository) {
+  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository, RecipeRepository recipeRepository) {
+    recipeRepository.deleteAll();
+    recipeRepository.truncateTable();
+
     commentRepository.deleteAll();
     commentRepository.truncateTable();
 
@@ -49,7 +54,7 @@ public class UserServiceTests {
   }
 
   private void clearData() {
-    clearData(userRepository, commentRepository, postRepository);
+    clearData(userRepository, commentRepository, postRepository, recipeRepository);
   }
 
 

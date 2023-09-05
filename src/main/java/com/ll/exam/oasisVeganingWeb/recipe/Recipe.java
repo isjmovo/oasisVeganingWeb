@@ -1,5 +1,7 @@
 package com.ll.exam.oasisVeganingWeb.recipe;
 
+import com.ll.exam.oasisVeganingWeb.Community.comment.Comment;
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +23,8 @@ public class Recipe {
   private String content;
 
   private LocalDateTime createDate;
+  private LocalDateTime modifyDate;
+
+  @ManyToOne
+  private SiteUser author;
 }

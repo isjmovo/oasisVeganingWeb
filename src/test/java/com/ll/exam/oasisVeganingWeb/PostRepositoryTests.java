@@ -3,6 +3,7 @@ package com.ll.exam.oasisVeganingWeb;
 import com.ll.exam.oasisVeganingWeb.Community.comment.CommentRepository;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.MyPost;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.PostRepository;
+import com.ll.exam.oasisVeganingWeb.recipe.RecipeRepository;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import com.ll.exam.oasisVeganingWeb.user.UserService;
@@ -30,6 +31,8 @@ public class PostRepositoryTests {
   private CommentRepository commentRepository;
   @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private RecipeRepository recipeRepository;
 
   private static long lastSampleDataId;
 
@@ -63,12 +66,12 @@ public class PostRepositoryTests {
     lastSampleDataId = createSampleData(userService, postRepository);
   }
 
-  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository) {
-    UserServiceTests.clearData(userRepository, commentRepository, postRepository);
+  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository, RecipeRepository recipeRepository) {
+    UserServiceTests.clearData(userRepository, commentRepository, postRepository, recipeRepository);
   }
 
   private void clearData() {
-    clearData(userRepository, commentRepository, postRepository);
+    clearData(userRepository, commentRepository, postRepository, recipeRepository);
   }
 
   @Test

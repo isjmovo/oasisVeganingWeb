@@ -4,12 +4,12 @@ import com.ll.exam.oasisVeganingWeb.Community.comment.Comment;
 import com.ll.exam.oasisVeganingWeb.Community.comment.CommentRepository;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.MyPost;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.PostRepository;
+import com.ll.exam.oasisVeganingWeb.recipe.RecipeRepository;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import com.ll.exam.oasisVeganingWeb.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
@@ -30,6 +30,8 @@ public class CommentRepositoryTests {
   private UserRepository userRepository;
   @Autowired
   private UserService userService;
+  @Autowired
+  private RecipeRepository recipeRepository;
 
   @BeforeEach
   void beforeEach() {
@@ -37,12 +39,12 @@ public class CommentRepositoryTests {
     createSampleData();
   }
 
-  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository) {
-    UserServiceTests.clearData(userRepository, commentRepository, postRepository);
+  public static void clearData(UserRepository userRepository, CommentRepository commentRepository, PostRepository postRepository, RecipeRepository recipeRepository) {
+    UserServiceTests.clearData(userRepository, commentRepository, postRepository, recipeRepository);
   }
 
   private void clearData() {
-    clearData(userRepository, commentRepository, postRepository);
+    clearData(userRepository, commentRepository, postRepository, recipeRepository);
   }
 
   private void createSampleData() {
