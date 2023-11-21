@@ -40,7 +40,7 @@ public class CheckController {
       e.printStackTrace();
       // 오류 처리 로직 추가
     }
-    return "result_form"; // 결과를 표시하는 뷰 이름
+    return "check_result"; // 결과를 표시하는 뷰 이름
   }
 
   @PostMapping("/scan")
@@ -56,7 +56,7 @@ public class CheckController {
       e.printStackTrace();
       // 오류 처리 로직 추가
     }
-    return "result_form"; // 결과를 표시하는 뷰 이름
+    return "check_result"; // 결과를 표시하는 뷰 이름
   }
 
   @GetMapping("/recommend")
@@ -73,21 +73,6 @@ public class CheckController {
     }
     return "recommend"; // 추천 제품 목록을 표시하는 뷰 이름
   }
-
-//  @PostMapping("/recommend")
-//  public String recommendProducts(Model model) {
-//    try {
-//      // CSV 데이터를 읽어옴
-//      String csvData = recommendService.csv();
-//      // 추천 제품 목록을 가져옴
-//      List<Product> recommendedProducts = recommendService.recommendProducts(csvData);
-//      model.addAttribute("recommendedProducts", recommendedProducts);
-//    } catch (IOException | CsvException e) {
-//      e.printStackTrace();
-//      // 오류 처리 로직 추가
-//    }
-//    return "recommend"; // 추천 제품 목록을 표시하는 뷰 이름
-//  }
 
   @GetMapping("/readCSV")
   public String readCSV(Model model) {

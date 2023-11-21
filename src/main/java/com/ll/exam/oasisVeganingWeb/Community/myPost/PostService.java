@@ -1,10 +1,8 @@
 package com.ll.exam.oasisVeganingWeb.Community.myPost;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +19,8 @@ import java.util.List;
 public class PostService {
   private final PostRepository postRepository;
 
-  @Autowired
-  private AmazonS3 amazonS3; // 이미지를 S3에 업로드하기 위한 클라이언트
+//  @Autowired
+//  private AmazonS3 amazonS3; // 이미지를 S3에 업로드하기 위한 클라이언트
 
   public Page<MyPost> getList(int page) {
     List<Sort.Order> sorts = new ArrayList<>();

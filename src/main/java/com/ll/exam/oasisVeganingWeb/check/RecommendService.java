@@ -44,7 +44,7 @@ public class RecommendService {
 
         double similarity = (double) matchingIngredients / (totalIngredients + ingredients.size() - matchingIngredients);
 
-        if (similarity >= 0.4) {
+        if (similarity >= 0.1) {
           recommendedProducts.add(product);
         }
       }
