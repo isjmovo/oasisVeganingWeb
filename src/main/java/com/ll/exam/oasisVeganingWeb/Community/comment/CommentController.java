@@ -2,7 +2,6 @@ package com.ll.exam.oasisVeganingWeb.Community.comment;
 
 import com.ll.exam.oasisVeganingWeb.Community.myPost.MyPost;
 import com.ll.exam.oasisVeganingWeb.Community.myPost.PostService;
-import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import com.ll.exam.oasisVeganingWeb.user.UserService;
 import jakarta.validation.Valid;

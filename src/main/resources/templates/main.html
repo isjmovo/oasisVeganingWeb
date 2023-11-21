@@ -1,54 +1,27 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
 
 <div layout:fragment="content">
-    <div id="carouselExampleIndicators z-1 position-absolute" class="carousel slide">
-        <div class="carousel-inner" style="width: 100%; height: 500px;">
-            <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1627855974821-60ccdf8613d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTV8fHZlZ2FuJTIwdGV4dHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                    class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1627866749431-767611d9dd8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTJ8fHZlZ2FuJTIwdGV4dHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                    class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1483918793747-5adbf82956c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA4fHx2ZWdhbiUyMHRleHR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                    class="d-block w-100">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <!-- <div class="col-6 z-2 position-absolute d-flex justify-content-center" style="top: 500px;">
-        <form class="input-group" style="height: 100px;">
-            <input type="text" class="form-control text-center rounded-pill" name="" placeholder="원하는 상품의 제품명을 검색하세요."
-                value="" style="background-color: #CADBC2">
-            <button type="submit" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-    </div> -->
-
+    <img src="https://cdn.pixabay.com/photo/2019/05/27/08/19/vegan-4232116_1280.jpg" class="d-block w-100" style="object-fit: cover; height: 200px;">
     <div class="justify-content-center text-center btns container my-5">
-        <div style="margin-right: 600px;">빠른 메뉴 선택</div>
 
-        <a class="rounded btn m-3" th:href="@{/lens}" style="width: 110px; height: 110px; background-color: #9ebd8e7b;">
-            <i class="fa-solid fa-camera" style="width: 70px; height: 70px;"></i>스마트 렌즈</a>
-        <a class="rounded btn m-3" href="#" style="width: 110px; height: 110px; background-color: #9ebd8e7b;">
-            <i class="fa-solid fa-utensils" style="width: 70px; height: 70px;"></i>레시피</a>
-        <a class="rounded btn m-3" href="#" style="width: 110px; height: 110px; background-color: #9ebd8e7b;">
-            <i class="fa-regular fa-calendar" style="width: 70px; height: 70px;"></i>그린 기록</a>
-        <a class="rounded btn m-3" href="#" style="width: 110px; height: 110px; background-color: #9ebd8e7b;">
-            <i class="fa-solid fa-users-line" style="width: 70px; height: 70px;"></i>커뮤니티</a>
-        <a class="rounded btn m-3" href="#" style="width: 110px; height: 110px; background-color: #9ebd8e7b;">
-            <i class="fa-solid fa-trophy" style="width: 70px; height: 70px;"></i>챌린지</a>
+        <a class="rounded btn m-3" th:href="@{/vegan/manual}" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-camera-lens-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">스마트 렌즈</p>
+        </a>
+        <a class="rounded btn m-3" th:href="@{/recipe/list}" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-tree-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">비건 레시피</p>
+        </a>
+        <a class="rounded btn m-3" href="#" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-search-eye-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">제품 검색</p>
+        </a>
+        <a class="rounded btn m-3" th:href="@{/community/create}" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-leaf-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">그린 기록</p>
+        </a>
+        <a class="rounded btn m-3" th:href="@{/community/list}" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-team-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">커뮤니티</p>
+        </a>
+        <a class="rounded btn m-3" th:href="@{/user/mypage}" style="width: 140px; height: 140px; background-color: #FFFFFF; border: 5px solid #206A5D;">
+            <i class="ri-user-settings-fill" style="color: #206A5D; font-size: 68px;"></i><br><p style="color: #000000;">마이 페이지</p>
+        </a>
     </div>
 </div>
 

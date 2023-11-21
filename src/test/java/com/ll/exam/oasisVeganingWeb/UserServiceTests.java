@@ -31,8 +31,8 @@ public class UserServiceTests {
   }
 
   public static void createSampleData(UserService userService) {
-    userService.create("관리자", "admin", "admin@test.com", "1234", "01012341234", "대한민국", "");
-    userService.create("유저1", "user1", "user1@test.com", "1234", "01012345678", "대한민국", "");
+    userService.create("관리자", "admin", "1234");
+    userService.create("유저1", "user1", "1234");
   }
 
   private void createSampleData() {
@@ -61,6 +61,6 @@ public class UserServiceTests {
   @Test
   @DisplayName("회원가입이 가능하다.")
   public void t1() {
-    userService.create("유저2", "user2", "user2@email.com", "1234", "01056785678", "대한민국", "");
+    userService.create("유저2", "user2", "1234");
   }
 }

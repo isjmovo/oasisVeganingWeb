@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @Getter
 public class SiteUserContext extends User implements OAuth2User {
   private final Long id;
-  private final String email;
   private final  String profileImgUrl;
 
   private Map<String, Object> attributes;
@@ -23,7 +22,6 @@ public class SiteUserContext extends User implements OAuth2User {
   public SiteUserContext(SiteUser siteUser, List<GrantedAuthority> authorities) {
     super(siteUser.getUsername(), siteUser.getPassword(), authorities);
     this.id = siteUser.getId();
-    this.email = siteUser.getEmail();
     this.profileImgUrl = getProfileImgUrl();
   }
 

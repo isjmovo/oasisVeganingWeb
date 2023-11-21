@@ -1,6 +1,5 @@
 package com.ll.exam.oasisVeganingWeb.recipe;
 
-import com.ll.exam.oasisVeganingWeb.Community.comment.Comment;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +16,7 @@ public class Recipe {
   private Long id;
 
   @Column(length = 200)
-  private String title;
+  private String subject;
 
   @Column(columnDefinition = "TEXT")
   private String content;
@@ -27,4 +26,7 @@ public class Recipe {
 
   @ManyToOne
   private SiteUser author;
+
+//  @OneToOne(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+//  private Image image;
 }

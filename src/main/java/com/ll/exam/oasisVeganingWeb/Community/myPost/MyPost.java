@@ -24,6 +24,9 @@ public class MyPost {
   @Column(columnDefinition = "TEXT")
   private String content;
 
+  @Column
+  private String postImg;
+
   private LocalDateTime createDate;
   private LocalDateTime modifyDate;
 

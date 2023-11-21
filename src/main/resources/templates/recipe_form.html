@@ -1,3 +1,23 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
-    
+
+<div layout:fragment="content" class="container my-3">
+    <h5 class="my-3 border-bottom pb-2">레시피 등록</h5>
+
+    <form th:action="@{''}" th:object="${recipeForm}" method="POST">
+        <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+
+        <div class="mb-3">
+            <label class="form-label">제목</label>
+            <input th:field="*{subject}" type="text" class="form-control" placeholder="제목을 입력해주세요.">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">내용</label>
+            <textarea th:field="*{content}" class="form-control" rows="10" placeholder="내용을 입력해주세요."></textarea>
+        </div>
+
+        <button type="submit" class="btn" style="color: #FFFFFF; background-color: #206A5D;">저장하기</button>
+    </form>
+</div>
+
 </html>

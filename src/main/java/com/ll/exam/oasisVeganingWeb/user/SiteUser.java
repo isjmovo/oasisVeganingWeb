@@ -1,6 +1,7 @@
 package com.ll.exam.oasisVeganingWeb.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,21 +17,17 @@ public class SiteUser {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @NotNull
   private String name;
 
+  @NotNull
   @Column(unique = true)
   private String username;
 
+  @NotNull
   private String password;
 
-  private String email;
-
-  @Column(unique = true)
-  private String phone;
-
-  private String address;
-
-  private String allergy;
+  private String quizResultType;
 
   public SiteUser(long id) {
     this.id = id;

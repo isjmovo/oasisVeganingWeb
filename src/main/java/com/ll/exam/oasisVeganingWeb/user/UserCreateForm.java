@@ -1,6 +1,5 @@
 package com.ll.exam.oasisVeganingWeb.user;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -22,13 +21,5 @@ public class UserCreateForm {
   @NotEmpty(message = "비밀번호 확인은 필수 항목입니다.")
   private String password2;
 
-  @Email(message = "올바른 이메일 형식으로 입력해주세요.")
-  private String email;
-
-  @NotEmpty(message = "전화번호는 필수 항목입니다.")
-  private String phone;
-
-  private String address;
-
-  private String allergy;
+//  private String allergy;
 }

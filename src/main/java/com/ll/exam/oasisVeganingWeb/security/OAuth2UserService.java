@@ -51,7 +51,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
             email = (String) attributesKakaoAcount.get("email");
           }
           siteUser = SiteUser.builder()
-              .email(email)
+//              .email(email)
               .username(username)
               .password("")
               .build();

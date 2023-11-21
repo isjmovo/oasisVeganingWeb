@@ -1,37 +1,26 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
 
-<div>안녕</div>
-
 <div layout:fragment="content" class="container my-3">
-    <table class="table text-center">
-        <colgroup>
-            <col>
-            <col width="50%">
-        </colgroup>
-        <thead style="background-color: #9EBD8E;">
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일시</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="my_post, loop : ${paging}">
-                <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
-                <td class="text-start">
-                    <a th:href="@{|/community/detail/${my_post.id}|}" th:text="${my_post.subject}"></a>
-                    <span class="text-danger small ms-2" th:if="${#lists.size(my_post.commentList) > 0}"
-                        th:text="${#lists.size(my_post.commentList)}">
-                    </span>
-                </td>
-                <td>
-                    <span th:text="${my_post.author?.username}"></span>
-                </td>
-                <td th:text="${#temporals.format(my_post.createDate, 'yy-MM-dd HH:mm')}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <h5 class="my-3 border-bottom pb-2">그린 기록</h5>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div th:each="my_post, loop : ${paging}" class="col">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a th:href="@{|/community/detail/${my_post.id}|}" th:text="${my_post.subject}"></a>
+                        <span style="color: #81B214;" class="small ms-2" th:if="${#lists.size(my_post.commentList) > 0}"
+                            th:text="${#lists.size(my_post.commentList)}">
+                        </span>
+                    </h5>
+                    <p class="card-text">
+                        <span th:text="${my_post.author?.username}"></span><br />
+                        <small class="text-muted"
+                            th:text="${#temporals.format(my_post.createDate, 'yy-MM-dd HH:mm')}"></small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 페이징처리 시작 -->
     <div th:if="${!paging.isEmpty()}">
@@ -42,10 +31,11 @@
                 </a>
             </li>
 
-            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+            <li style="background-color: #81B214;" th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
                 th:if="${page >= paging.number-5 and page <= paging.number+5}"
                 th:classappend="${page == paging.number} ? 'active'" class="page-item">
-                <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page+1}"></a>
+                <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page+1}"
+                    style="color: #FFFFFF; background-color: #206A5D; border-color: #206A5D;"></a>
             </li>
 
             <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
@@ -57,7 +47,10 @@
     </div>
     <!-- 페이징처리 끝 -->
 
-    <a th:href="@{/community/create}" class="btn btn-primary">포스트 등록하기</a>
+    <div class="mt-2">
+        <a th:href="@{/community/create}" class="btn my-2" style="background-color: #206A5D; color: #FFFFFF;">나의 그린 기록
+            남기기</a>
+    </div>
 </div>
 
 </html>

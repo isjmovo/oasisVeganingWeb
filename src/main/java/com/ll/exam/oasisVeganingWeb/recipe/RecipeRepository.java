@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long>, RepositoryUtil {
-  Recipe findByTitle(String title);
+  Recipe findBySubject(String subject);
 
-  Recipe findByTitleAndContent(String title, String content);
+  Recipe findBySubjectAndContent(String subject, String content);
 
-  List<Recipe> findByTitleLike(String title);
+  List<Recipe> findBySubjectLike(String subject);
 
   @Transactional
   @Modifying

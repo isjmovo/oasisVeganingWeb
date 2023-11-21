@@ -10,7 +10,10 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
     <!-- UserService CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.4.2/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
     <title>VEGANING</title>
 </head>
@@ -25,11 +28,11 @@
     </main>
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
-    <footer class="bg-dark text-light">
+    <!-- <footer class="bg-dark text-light">
         <div class="container py-3 d-flex justify-content-center">
             copyright all rights reserved
         </div>
-    </footer>
+    </footer> -->
 
     <script>
         $('select[value]').each((index, node) => {
@@ -37,6 +40,10 @@
             const value = $(node).attr("value");
             $select.find(`option[value="${value}"]`).prop("selected", true);
         });
+
+        if (window.location.pathname == '/main') {
+            document.write('<style>.navbarItem{display:none !important;}</style>');
+        }
     </script>
 
     <th:block layout:fragment="script"></th:block>

@@ -2,17 +2,24 @@ package com.ll.exam.oasisVeganingWeb.user;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/user")
 public class UserController {
+  @Autowired
   private final UserService userService;
+  private final UserRepository userRepository;
 
   @GetMapping("/signup")
   public String signup(UserCreateForm userCreateForm) {
@@ -33,22 +40,30 @@ public class UserController {
 
     try {
       userService.create(userCreateForm.getName(), userCreateForm.getUsername(),
-          userCreateForm.getEmail(), userCreateForm.getPassword1(), userCreateForm.getPhone(), userCreateForm.getAddress(), userCreateForm.getAllergy());
+//          userCreateForm.getPassword1(), userCreateForm.getAllergy());
+          userCreateForm.getPassword1());
     } catch (SignupUsernameDuplicatedException e) {
       bindingResult.reject("SignupUsernameDuplicated", e.getMessage());
 
       return "signup_form";
-    } catch (SignupPhoneDuplicatedException e) {
-      bindingResult.reject("SignupPhoneDuplicated", e.getMessage());
-
-      return "signup_form";
     }
 
-    return "redirect:/";
+    return "test_form";
   }
 
   @GetMapping("/login")
   public String login() {
     return "login_form";
+  }
+
+  @PreAuthorize("isAuthenticated()")
+  @GetMapping("/mypage")
+  public String myPage(Principal principal, Model model) {
+
+    SiteUser user = userService.getUser(principal.getName());
+
+    model.addAttribute("user", user);
+
+    return "mypage";
   }
 }

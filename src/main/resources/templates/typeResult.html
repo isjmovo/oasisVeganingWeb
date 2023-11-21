@@ -1,0 +1,16 @@
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
+
+<div layout:fragment="content" class="container my-3">
+    <div class="card">
+        <div class="card-header">
+            <h5>성향 테스트 결과</h5>
+        </div>
+        <div class="card-body">
+            <h2 th:text="'당신의 성향은 ' + ${result.getDescription()}"></h2>
+            <a th:href="@{/main}" class="btn btn-success" style="background-color: #206A5D; color: #FFFFFF;">메인으로 이동</a>
+        </div>
+    </div>
+    
+</div>
+
+</html>

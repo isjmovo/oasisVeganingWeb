@@ -82,8 +82,8 @@
             rows="10"></textarea>
         <textarea sec:authorize="isAuthenticated()" th:field="*{content}" class="form-control" rows="10"></textarea>
 
-        <button sec:authorize="isAnonymous()" disabled type="submit" class="btn btn-primary my-2">답글등록</button>
-        <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-primary my-2">답글등록</button>
+        <button sec:authorize="isAnonymous()" disabled type="submit" class="btn my-2" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
+        <button sec:authorize="isAuthenticated()" type="submit" class="btn my-2" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
     </form>
 </div>
 

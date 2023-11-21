@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @RequestMapping("/community")
@@ -92,7 +93,7 @@ public class PostController {
 
   @PreAuthorize("isAuthenticated()")
   @PostMapping("/create")
-  public String postCreate(Principal principal, Model model, @Valid PostForm postForm, BindingResult bindingResult) {
+  public String postCreate(Principal principal, Model model, @Valid PostForm postForm, BindingResult bindingResult) throws IOException {
     if (bindingResult.hasErrors()) {
       return "post_form";
     }
