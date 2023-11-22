@@ -1,0 +1,50 @@
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
+
+<div layout:fragment="content" class="container my-3">
+    <div class="card mt-3 my-3">
+        <div class="card-header">
+            <h5 class="card-title">저장된 사진으로 비건 판독하기</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                1. '저장된 사진으로 비건 판독하기' 버튼을 눌러주세요.
+                <br>
+                2. 기기에 저장된 사진 중 비건 판독을 진행할 사진을 올려주세요.
+                <br>
+                3. 비건 판독을 눌러주세요.
+                <br>
+                4. 비건 판독 결과와 성분을 확인해주세요.
+            </p>
+        </div>
+    </div>
+    <!-- <div class="my-3 d-flex justify-content-center" style="height: 300px;"> -->
+    <!-- <input class="form-control w-75 p-3" type="file" id="formFile"> -->
+    <!-- <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc6adBI%2FbtsuGmHqNTZ%2Foo7remGfUfgdu42XKZuMkk%2Fimg.png">
+    </div> -->
+
+    <div class="my-3">
+        <!-- <div class="d-grid gap-2 w-75"> -->
+        <form th:action="@{/img/upload}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="my-3">
+            <br>
+            <button class="btn" style="background-color: #206A5D; color: #FFFFFF;" type="submit">이미지 업로드</button>
+        </form>
+
+        <!-- <form th:action="@{/vegan/img}" method="get" enctype="multipart/form-data">
+                <button class="btn btn-primary" type="submit">OCR 실행</button>
+            </form> -->
+        
+        <!-- </div> -->
+        <!-- <p th:if="${message}" th:text="${message}"></p> -->
+    </div>
+    <div class="my-3 border-bottom pb-2"></div>
+
+    <div class="d-flex justify-content-center mb-3">
+        <div class="box p-3">
+            <a class="btn" style="background-color: #206A5D; color: #FFFFFF;" th:href="@{/vegan/result}">비건 판독</a>
+        </div>
+    </div>
+</div>
+
+</html>

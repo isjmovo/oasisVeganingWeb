@@ -18,7 +18,7 @@ public class ImageController {
 
   @GetMapping("/upload")
   public String showUploadForm() {
-    return "check_form";
+    return "check_img";
   }
 
   @PostMapping("/upload")
@@ -37,7 +37,7 @@ public class ImageController {
       modelAndView.addObject("message", "이미지를 선택하세요.");
     }
 
-    modelAndView.setViewName("check_form");
+    modelAndView.setViewName("check_img");
     return modelAndView;
   }
 }
