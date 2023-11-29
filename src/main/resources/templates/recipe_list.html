@@ -1,10 +1,10 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-3">
-    <h5 class="my-3 border-bottom pb-2">레시피</h5>
+    <h5 class="my-3 border-bottom pb-2 tts">레시피</h5>
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div th:each="recipe, loop : ${paging}" class="col">
-            <div class="card mb-3">
+            <div class="card mb-3 tts">
                 <div class="card-body">
                     <h5 class="card-title">
                         <a th:href="@{|/recipe/detail/${recipe.id}|}" th:text="${recipe.subject}"></a>
@@ -23,7 +23,7 @@
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number-1}|}">
+                <a class="page-link tts" th:href="@{|?page=${paging.number-1}|}">
                     <span>이전</span>
                 </a>
             </li>
@@ -31,12 +31,12 @@
             <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
                 th:if="${page >= paging.number-5 and page <= paging.number+5}"
                 th:classappend="${page == paging.number} ? 'active'" class="page-item">
-                <a class="page-link" th:href="@{|?page=${page}|}" th:text="${page+1}"
+                <a class="page-link tts" th:href="@{|?page=${page}|}" th:text="${page+1}"
                     style="color: #FFFFFF; background-color: #206A5D; border-color: #206A5D;"></a>
             </li>
 
             <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number+1}|}">
+                <a class="page-link tts" th:href="@{|?page=${paging.number+1}|}">
                     <span>다음</span>
                 </a>
             </li>
@@ -45,7 +45,7 @@
     <!-- 페이징처리 끝 -->
 
     <div class="mt-2">
-        <a th:href="@{/recipe/create}" class="btn my-2" style="color: #FFFFFF; background-color: #206A5D;">레시피 등록하기</a>
+        <a th:href="@{/recipe/create}" class="btn my-2 tts" style="color: #FFFFFF; background-color: #206A5D;">레시피 등록하기</a>
     </div>
 </div>
 

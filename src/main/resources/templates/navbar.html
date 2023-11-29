@@ -3,7 +3,7 @@
 <nav th:fragment="navbarFragment" class="navbar navbar-expand-lg navbar-light border-bottom"
     style="background-color: #F1F1E8;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">VEGANING</a>
+        <a class="navbar-brand tts" href="/">VEGANING</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,19 +11,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
 
-                <li class="nav-item navbarItem"><a class="nav-link" th:href="@{/vegan/manual}">스마트 렌즈</a></li>
-                <li class="nav-item navbarItem"><a class="nav-link" th:href="@{/recipe/list}">레시피</a></li>
-                <li class="nav-item navbarItem"><a class="nav-link" th:href="@{/community/create}">그린 기록</a></li>
-                <li class="nav-item navbarItem"><a class="nav-link" th:href="@{/community/list}">커뮤니티</a></li>
+                <li class="nav-item navbarItem tts"><a class="nav-link" th:href="@{/vegan/manual}">스마트 렌즈</a></li>
+                <li class="nav-item navbarItem tts"><a class="nav-link" th:href="@{/recipe/list}">레시피</a></li>
+                <li class="nav-item navbarItem tts"><a class="nav-link" th:href="@{/community/create}">그린 기록</a></li>
+                <li class="nav-item navbarItem tts"><a class="nav-link" th:href="@{/community/list}">커뮤니티</a></li>
 
-                <li class="nav-item"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/mypage}">마이 페이지</a></li>
+                <li class="nav-item tts"><a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/mypage}">마이 페이지</a></li>
 
-                <li class="nav-item">
+                <li class="nav-item tts">
 
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
                     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item tts">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/user/signup}">회원가입</a>
                 </li>
             </ul>

@@ -2,20 +2,18 @@
 
 <div layout:fragment="content" class="container my-3">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header tts">
             <h2>성향 테스트</h2>
         </div>
         <div class="card-body">
 
             <form th:action="@{/type/test}" th:object="${question}" method="post">
-                <p th:text="${question.questionText}"></p>
-                <button type="submit" class="btn btn-success" name="userAnswer" th:value="${1}">O</button>
-                <button type="submit" class="btn btn-danger" name="userAnswer" th:value="${0}">X</button>
+                <p class="tts" th:text="${question.questionText}"></p>
+                <button type="submit" class="btn btn-success tts" name="userAnswer" th:value="${1}">O</button>
+                <button type="submit" class="btn btn-danger tts" name="userAnswer" th:value="${0}">X</button>
             </form>
         </div>
     </div>
 </div>
 
 </html>
-
-<!-- th:field="*{userAnswer}" -->

@@ -1,22 +1,22 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-3">
-    <h5 class="my-3 border-bottom pb-2">나의 그린 기록 남기기</h5>
+    <h5 class="my-3 border-bottom pb-2 tts">나의 그린 기록 남기기</h5>
 
     <form th:action="@{''}" th:object="${postForm}" method="POST">
         <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
-        <div class="mb-3">
+        <div class="mb-3 tts">
             <label class="form-label">제목</label>
             <input th:field="*{subject}" type="text" class="form-control" placeholder="제목을 입력해주세요.">
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 tts">
             <label class="form-label">내용</label>
             <textarea th:field="*{content}" class="form-control" rows="10" placeholder="내용을 입력해주세요."></textarea>
         </div>
 
-        <button type="submit" class="btn my-2" style="color: #FFFFFF; background-color: #206A5D;">저장하기</button>
+        <button type="submit" class="btn my-2 tts" style="color: #FFFFFF; background-color: #206A5D;">저장하기</button>
     </form>
 </div>
 

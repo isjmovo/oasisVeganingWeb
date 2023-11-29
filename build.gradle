@@ -48,10 +48,8 @@ dependencies {
 
 	implementation 'net.sourceforge.tess4j:tess4j:4.5.5'
 
-	implementation 'org.apache.poi:poi:5.0.0' // 최신 버전 사용
-	implementation 'org.apache.poi:poi-ooxml:5.0.0' // 최신 버전 사용
-
-	implementation 'com.sun.speech:freets:1.2.2'
+	implementation 'org.apache.poi:poi:5.0.0'
+	implementation 'org.apache.poi:poi-ooxml:5.0.0'
 }
 
 tasks.named('test') {

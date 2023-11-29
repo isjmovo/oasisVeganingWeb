@@ -2,19 +2,18 @@
 
 <div layout:fragment="content" class="container my-3">
 
-    <h5 class="my-3 border-bottom pb-2">비건 판독 결과</h5>
+    <h5 class="my-3 border-bottom pb-2 tts">비건 판독 결과</h5>
 
     <div class="row d-flex align-items-center">
         <div class="col-md-6 text-center">
             <!-- 비건 판독 결과 부분 -->
-            <div class="box p-3 mb-3">
-                <h2></h2>
+            <div class="box p-3 mb-3 tts">
                 <h2 th:if="${isVegan}" style="color: #206A5D;">비건 제품입니다.</h2>
                 <h2 th:unless="${isVegan}" class="text-danger">비건 제품이 아닙니다.</h2>
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 tts">
             <h5>성분 목록</h5>
             <ul class="list-group">
                 <li th:each="ingredientName : ${ingredientNames}" class="list-group-item">
@@ -28,8 +27,8 @@
     <div class="d-flex justify-content-center mb-3">
 
         <div class="box p-3 my-3">
-            <a class="btn" style="background-color: #F1F1E8; color: #000000;" th:href="@{/vegan/manual}">다시 검사</a>
-            <a class="btn" style="background-color: #206A5D; color: #FFFFFF;" th:href="@{/vegan/recommend}">비슷한 제품
+            <a class="btn tts" style="background-color: #F1F1E8; color: #000000;" th:href="@{/vegan/manual}">다시 검사</a>
+            <a class="btn tts" style="background-color: #206A5D; color: #FFFFFF;" th:href="@{/vegan/recommend}">비슷한 제품
                 추천받기</a>
         </div>
     </div>

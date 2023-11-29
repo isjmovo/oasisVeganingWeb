@@ -28,12 +28,6 @@
     </main>
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
-    <!-- <footer class="bg-dark text-light">
-        <div class="container py-3 d-flex justify-content-center">
-            copyright all rights reserved
-        </div>
-    </footer> -->
-
     <script>
         $('select[value]').each((index, node) => {
             const $select = $(node);
@@ -44,6 +38,25 @@
         if (window.location.pathname == '/main') {
             document.write('<style>.navbarItem{display:none !important;}</style>');
         }
+
+
+        // TTS
+        function readText(text) {
+            var speech = new SpeechSynthesisUtterance();
+            speech.text = text;
+            window.speechSynthesis.speak(speech);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var textElements = document.querySelectorAll('.tts');
+
+            textElements.forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var textToRead = element.innerText || element.textContent;
+                    readText(textToRead);
+                });
+            });
+        });
     </script>
 
     <th:block layout:fragment="script"></th:block>

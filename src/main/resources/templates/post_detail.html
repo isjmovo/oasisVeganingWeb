@@ -3,11 +3,11 @@
 <div layout:fragment="content" class="container my-3">
 
     <!-- 포스트 -->
-    <h2 class="border-bottom py-2" th:text="${myPost.subject}"></h2>
+    <h2 class="border-bottom py-2 tts" th:text="${myPost.subject}"></h2>
 
     <div class="card my-3">
-        <div class="card-body">
-            <div class="card-text" th:utext="${@commonUtil.markdown(myPost.content)}"></div>
+        <div class="card-body tts">
+            <div class="card-text" id="readText" th:utext="${@commonUtil.markdown(myPost.content)}"></div>
 
             <div class="d-flex justify-content-end">
                 <div th:if="${myPost.modifyDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">
@@ -24,23 +24,23 @@
             </div>
             <div class="my-3">
 
-                <a th:href="@{|/community/modify/${myPost.id}|}" class="btn btn-sm btn-outline-secondary"
+                <a th:href="@{|/community/modify/${myPost.id}|}" class="btn btn-sm btn-outline-secondary tts"
                     sec:authorize="isAuthenticated()"
                     th:if="${myPost.author != null and #authentication.getPrincipal().getUsername() == myPost.author.username}"
                     th:text="수정"></a>
 
                 <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{|/community/delete/${myPost.id}|}"
-                    class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                    class="delete btn btn-sm btn-outline-secondary tts" sec:authorize="isAuthenticated()"
                     th:if="${myPost.author != null and #authentication.getPrincipal().getUsername() == myPost.author.username}"
                     th:text="삭제"></a>
             </div>
         </div>
     </div>
     <!-- 답글의 갯수 표시 -->
-    <h5 class="border-bottom my-3 py-2" th:text="|${#lists.size(myPost.commentList)}개의 답변이 있습니다.|"></h5>
+    <h5 class="border-bottom my-3 py-2 tts" th:text="|${#lists.size(myPost.commentList)}개의 답변이 있습니다.|"></h5>
 
     <!-- 답글 반복 시작 -->
-    <div class="card my-3" th:each="comment : ${myPost.commentList}">
+    <div class="card my-3 tts" th:each="comment : ${myPost.commentList}">
         <a style="scroll-margin-top:10px;" th:id="|comment_${comment.id}|"></a>
         <div class="card-body">
             <div class="card-text" th:utext="${@commonUtil.markdown(comment.content)}"></div>
@@ -60,13 +60,13 @@
             </div>
             <div class="my-3">
 
-                <a th:href="@{|/comment/modify/${comment.id}|}" class="btn btn-sm btn-outline-secondary"
+                <a th:href="@{|/comment/modify/${comment.id}|}" class="btn btn-sm btn-outline-secondary tts"
                     sec:authorize="isAuthenticated()"
                     th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                     th:text="수정"></a>
 
                 <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" th:href="@{|/comment/delete/${comment.id}|}"
-                    class="delete btn btn-sm btn-outline-secondary" sec:authorize="isAuthenticated()"
+                    class="delete btn btn-sm btn-outline-secondary tts" sec:authorize="isAuthenticated()"
                     th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                     th:text="삭제"></a>
             </div>
@@ -82,8 +82,8 @@
             rows="10"></textarea>
         <textarea sec:authorize="isAuthenticated()" th:field="*{content}" class="form-control" rows="10"></textarea>
 
-        <button sec:authorize="isAnonymous()" disabled type="submit" class="btn my-2" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
-        <button sec:authorize="isAuthenticated()" type="submit" class="btn my-2" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
+        <button sec:authorize="isAnonymous()" disabled type="submit" class="btn my-2 tts" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
+        <button sec:authorize="isAuthenticated()" type="submit" class="btn my-2 tts" style="background-color: #206A5D; color: #FFFFFF;">답글 등록</button>
     </form>
 </div>
 

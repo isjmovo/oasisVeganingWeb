@@ -1,20 +1,19 @@
 <html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-3">
-    <h5 class="my-3 border-bottom pb-2">추천 제품</h5>
+    <h5 class="my-3 border-bottom pb-2 tts">추천 제품</h5>
     <div class="row">
-        <div th:each="product : ${recommendedProducts}" class="col-md-4 mb-4">
+        <div th:each="product : ${recommendedProducts}" class="col-md-4 mb-4 tts">
             <div class="card">
                 <img th:src="${product.imageUrl}" class="card-img-top img-thumbnail" alt="Product Image"
                     style="max-height: 200px; width: 100%; object-fit: contain;" />
                 <div class="card-body text-center">
                     <h5 th:text="${product.name}" class="card-title"></h5>
-                    <!-- 다른 제품 정보도 여기에 추가 -->
                 </div>
             </div>
         </div>
         <div class="box p-3">
-            <a class="btn" style="background-color: #206A5D; color: #FFFFFF;" th:href="@{/main}">메인으로</a>
+            <a class="btn tts" style="background-color: #206A5D; color: #FFFFFF;" th:href="@{/main}">메인으로</a>
         </div>
     </div>
 </div>
