@@ -1,0 +1,60 @@
+<html xmlns:layout="http://ultraq.net.nz/thymeleaf/layout" xmlns:th="http://thymeleaf.org" layout:decorate="~{layout}">
+
+<div layout:fragment="content" class="container my-3">
+
+    <h5 class="my-3 border-bottom pb-2 tts">제품 리스트</h5>
+    <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+
+        <form class="col-md-8 p-4" style="border: 1px solid #ccc; border-radius: 10px; overflow: hidden;">
+            <div class="input-group">
+                <input type="text" class="form-control" name="kw" placeholder="검색어를 입력하세요." th:value="${param.kw}"
+                    style="border-radius: 5px 0 0 5px;">
+                <div class="input-group-append">
+                    <button type="submit" class="btn tts"
+                        style="border-radius: 0 5px 5px 0; color: #FFFFFF; background-color: #206A5D;">검색</button>
+                </div>
+            </div>
+        </form>
+
+        <div th:each="product, loop : ${paging}" class="col">
+            <div class="card mb-3 tts">
+                <img th:src="${product.imageUrl}" class="card-img-top img-thumbnail" alt="Product Image"
+                    style="max-height: 200px; width: 100%; object-fit: contain;" />
+                <div class="card-body text-center tts">
+                    <h5 th:text="${product.name}" class="card-title"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이징처리 시작 -->
+    <div th:if="${!paging.isEmpty()}">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                <a class="page-link tts" th:href="@{|?page=${paging.number-1}&kw=${kw}|}">
+                    <span>이전</span>
+                </a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(0, paging.totalPages-1)}"
+                th:if="${page >= paging.number-5 and page <= paging.number+5}"
+                th:classappend="${page == paging.number} ? 'active'" class="page-item">
+                <a class="page-link tts" th:href="@{|?page=${page}&kw=${kw}|}" th:text="${page+1}"
+                    style="color: #FFFFFF; background-color: #206A5D; border-color: #206A5D;"></a>
+            </li>
+
+            <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                <a class="page-link tts" th:href="@{|?page=${paging.number+1}%kw=${kw}|}">
+                    <span>다음</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 페이징처리 끝 -->
+
+    <div class="mt-2">
+        <a th:href="@{/vegan/list}" class="btn my-2 tts" style="color: #FFFFFF; background-color: #206A5D;">메인으로</a>
+    </div>
+</div>
+
+</html>

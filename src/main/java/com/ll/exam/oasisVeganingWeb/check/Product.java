@@ -17,6 +17,9 @@ public class Product {
 
   private String imageUrl;
 
+//  @ManyToMany
+//  Set<SiteUser> like;
+
   @ManyToMany
   @JoinTable(name = "product_ingredient",
       joinColumns = @JoinColumn(name = "product_id"),

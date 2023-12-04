@@ -3,6 +3,7 @@ package com.ll.exam.oasisVeganingWeb.check;
 import com.ll.exam.oasisVeganingWeb.img.ImageService;
 import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,9 @@ public class CheckController {
   @Autowired
   private CSVService csvService;
   @Autowired
-  ImageService imageService;
+  private ImageService imageService;
+  @Autowired
+  private SearchService searchService;
 
   @GetMapping("/manual")
   public String manual(){
@@ -125,5 +128,15 @@ public class CheckController {
 
     modelAndView.setViewName("check_img");
     return modelAndView;
+  }
+
+  @GetMapping("/list")
+  public String list(String kw, Model model, @RequestParam(defaultValue = "0") int page) {
+    Page<Product> paging = searchService.getList(kw, page);
+
+    model.addAttribute("paging", paging);
+    model.addAttribute("kw", kw);
+
+    return "check_product_list";
   }
 }
