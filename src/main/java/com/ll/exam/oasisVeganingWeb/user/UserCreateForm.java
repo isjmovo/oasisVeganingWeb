@@ -20,4 +20,7 @@ public class UserCreateForm {
 
   @NotEmpty(message = "비밀번호 확인은 필수 항목입니다.")
   private String password2;
+
+  private String allergies;
+  private String type;
 }

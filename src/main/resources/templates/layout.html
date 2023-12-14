@@ -59,33 +59,12 @@
         });
 
 
-        // 알레르기 입력 폼
-        function addAllergyField() {
-        var container = document.getElementById('allergies-container');
-        var inputGroup = document.createElement('div');
-        inputGroup.classList.add('input-group', 'mb-3');
-
-        var input = document.createElement('input');
-        input.type = 'text';
-        input.name = 'allergies[]';
-        input.classList.add('form-control');
-        input.style.backgroundColor = '#FFFFFF';
-
-        var buttonGroup = document.createElement('div');
-        buttonGroup.classList.add('input-group-append');
-
-        var addButton = document.createElement('button');
-        addButton.type = 'button';
-        addButton.classList.add('btn', 'btn-outline-secondary');
-        addButton.textContent = '추가';
-        addButton.addEventListener('click', addAllergyField);
-
-        buttonGroup.appendChild(addButton);
-
-        inputGroup.appendChild(input);
-        inputGroup.appendChild(buttonGroup);
-
-        container.appendChild(inputGroup);
+        function selectType(type, value) {
+        // 선택된 버튼에 'active' 클래스를 추가하고, 다른 버튼에서는 제거합니다.
+        document.querySelectorAll(`[name="${type}"]`).forEach(function (element) {
+            element.classList.remove('active');
+        });
+        document.querySelector(`[name="${type}"][value="${value}"]`).classList.add('active');
     }
     </script>
 

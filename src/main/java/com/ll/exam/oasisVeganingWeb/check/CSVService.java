@@ -16,7 +16,7 @@ public class CSVService {
   @Autowired
   private IngredientRepository ingredientRepository;
 
-  @Value("${csv.file.path}") // 프로퍼티 파일에서 CSV 파일 경로 설정
+  @Value("${csv.file.path}")
   private String csvFilePath;
 
   public String readCSVData() throws IOException, CsvException {

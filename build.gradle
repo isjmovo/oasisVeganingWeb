@@ -48,8 +48,6 @@ dependencies {
 
 	implementation 'org.commonmark:commonmark:0.21.0'
 
-	implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.4'
-
 	implementation 'com.opencsv:opencsv:5.4' // CSV Parsing
 
 	implementation 'net.sourceforge.tess4j:tess4j:4.5.5'

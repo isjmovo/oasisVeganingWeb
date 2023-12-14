@@ -21,9 +21,6 @@ public class PostService {
   private final PostRepository postRepository;
   private final UserRepository userRepository;
 
-//  @Autowired
-//  private AmazonS3 amazonS3; // 이미지를 S3에 업로드하기 위한 클라이언트
-
   public Page<MyPost> getList(int page) {
     List<Sort.Order> sorts = new ArrayList<>();
     sorts.add(Sort.Order.desc("createDate"));

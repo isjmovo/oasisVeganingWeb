@@ -1,5 +1,6 @@
 package com.ll.exam.oasisVeganingWeb.check;
 
+import com.ll.exam.oasisVeganingWeb.img.ImageService;
 import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class ResultService {
   private NonVeganIngredientRepository nonVeganIngredientRepository;
   @Autowired
   private CSVService csvService;
+  private ImageService imageService;
 
   public boolean result(String csvData) {
     boolean vegan = true;

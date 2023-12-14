@@ -8,19 +8,18 @@
         <div class="col-md-6 text-center">
             <!-- 비건 판독 결과 부분 -->
             <div class="box p-3 mb-3 tts">
-                <!-- <h2 th:if="${isVegan}" style="color: #206A5D;">비건 제품입니다.</h2> -->
-                <!-- <h2 th:unless="${isVegan}" class="text-danger">비건 제품이 아닙니다.</h2> -->
-                <p th:text="${resultMessage}"></p>
+                <h2 th:if="${isVegan}" style="color: #206A5D;">비건 제품입니다.</h2>
+                <h2 th:unless="${isVegan}" class="text-danger">비건 제품이 아닙니다.</h2>
             </div>
         </div>
 
         <div class="col-md-6 tts">
             <h5>성분 목록</h5>
-            <!-- <ul class="list-group">
+            <ul class="list-group">
                 <li th:each="ingredientName : ${ingredientNames}" class="list-group-item">
                     <span th:text="${ingredientName}"></span>
                 </li>
-            </ul> -->
+            </ul>
         </div>
 
     </div>

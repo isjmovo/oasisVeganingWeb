@@ -39,22 +39,19 @@ public class UserController {
 
     if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
       bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 비밀번호가 일치하지 않습니다.");
-
       return "signup_form";
     }
 
     try {
+      // Pass the allergies information to the service method
       userService.create(userCreateForm.getName(), userCreateForm.getUsername(),
-//          userCreateForm.getPassword1(), userCreateForm.getAllergy());
-          userCreateForm.getPassword1());
+          userCreateForm.getPassword1(), userCreateForm.getAllergies());
     } catch (SignupUsernameDuplicatedException e) {
       bindingResult.reject("SignupUsernameDuplicated", e.getMessage());
-
       return "signup_form";
     }
 
-//    return "test_form";
-    return "redirect:/";
+    return "redirect:/type/test";
   }
 
   @GetMapping("/login")

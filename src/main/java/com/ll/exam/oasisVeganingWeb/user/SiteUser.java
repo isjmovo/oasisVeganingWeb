@@ -30,10 +30,9 @@ public class SiteUser {
   @NotNull
   private String password;
 
-  @ElementCollection
-  private List<String> allergies;
+  private String allergies;
 
-  private String quizResultType;
+  private String type;
 
   public SiteUser(long id) {
     this.id = id;

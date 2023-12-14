@@ -1,105 +1,76 @@
 package com.ll.exam.oasisVeganingWeb.type;
 
-import com.ll.exam.oasisVeganingWeb.user.SiteUser;
 import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import com.ll.exam.oasisVeganingWeb.user.UserService;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class TypeService {
-  private List<Question> questions;
-  private Map<Integer, Type> userAnswers;
-  private int currentQuestionIndex;
   private UserService userService;
   private UserRepository userRepository;
 
-  public TypeService() {
-    questions = new ArrayList<>();
-    questions.add(new Question("최근 채소 섭취를 하신 적이 있습니까?", null));
-    questions.add(new Question("최근 우유, 요거트, 치즈 등의 유제품을 하신 적이 있습니까?", null));
-    questions.add(new Question("최근 달걀 섭취를 하신 적이 있습니까?", null));
-    questions.add(new Question("최근 생선, 조개, 새우 등 어패류를 섭취하신 적이 있습니까?", null));
-    questions.add(new Question("최근 닭, 오리 등 품종 개량을 하여 육성한 조류를 섭취하신 적이 있습니까?", null));
-    questions.add(new Question("최근 육류를 섭취하신 적이 있습니까?", null));
+  // 질문 목록
+  private static final List<String> questions = Arrays.asList(
+      "최근 채소 섭취를 하신 적이 있습니까?",
+      "최근 우유, 요거트, 치즈 등의 유제품을 하신 적이 있습니까?",
+      "최근 달걀 섭취를 하신 적이 있습니까?",
+      "최근 생선, 조개, 새우 등 어패류를 섭취하신 적이 있습니까?",
+      "최근 닭, 오리 등 품종 개량을 하여 육성한 조류를 섭취하신 적이 있습니까?",
+      "최근 육류를 섭취하신 적이 있습니까?"
+  );
 
-    currentQuestionIndex = 0;
-    userAnswers = new HashMap<>();
+  // 각 질문에 대한 답을 저장하는 리스트
+  private List<Integer> answers = new ArrayList<>();
+
+  // 질문 목록 반환
+  public List<String> getQuestions() {
+    return questions;
   }
 
-  public Type getResult() {
-    return userAnswers.get(questions.size() - 1);  // 가장 마지막에 대답한 질문에 대한 결과
-  }
-
-  public void recordUserAnswer(Integer userAnswer) {
-    Type result = calculateResult(userAnswer);
-    userAnswers.put(currentQuestionIndex, result);
-
-    // 현재 질문 인덱스 증가
-    currentQuestionIndex++;
-
-    // 현재 질문 인덱스가 질문의 총 개수와 동일하다면 모든 질문에 답했으므로 결과 페이지로 이동
-    if (currentQuestionIndex == questions.size()) {
-      navigateToResultPage();
+  // 현재 질문 번호에 해당하는 질문 반환
+  public String getQuestion(int index) {
+    if (index < questions.size()) {
+      return questions.get(index);
     }
+    return "";
   }
 
-  private Type calculateResult(Integer userAnswer) {
-    Type type;
-
-    if (userAnswer == 1) {
-      type = Type.A; // 기본적으로 A 타입으로 초기화
-
-      // 각 질문에 대한 로직 추가
-      if (currentQuestionIndex >= 2) {
-        type = Type.B;
-      }
-      else if (currentQuestionIndex >= 3) {
-        type = Type.C;
-      }
-      else if (currentQuestionIndex >= 4) {
-        type = Type.E;
-      }
-      else if (currentQuestionIndex >= 5) {
-        type = Type.F;
-      }
-      else if (currentQuestionIndex >= 6) {
-        type = Type.UNDEFINED;
-      }
-    } else {
-      type = Type.A;
-    }
-
-    return type;
+  // 사용자의 답을 처리
+  public void processAnswer(int questionIndex, int answer) {
+    // 각 질문에 대한 답을 저장
+    answers.add(answer);
   }
 
-  public Question getCurrentQuestion() {
-    if (currentQuestionIndex < questions.size()) {
-      return questions.get(currentQuestionIndex);
+  // 총 질문 개수 반환
+  public int getTotalQuestions() {
+    return questions.size();
+  }
+
+  public String calculateResult() {
+    // 기본 결과는 "플렉시테리언"
+    String result = "플렉시테리언";
+
+    // 각 유형에 대한 설명을 저장하는 배열
+    String[] type = new String[]{"비건", "락토", "오보", "페스코", "폴로", "플렉시테리언"};
+
+    // 배열 answers를 순회하며 각 유형에 대한 조건을 검사
+    for (int i = 0; i < 6; i++) {
+      if (answers.get(i) == 1) {
+        // 현재 인덱스가 1이고 다음 인덱스(2)도 1인 경우 "락토오보"로 결과 설정
+        if (i == 1 && answers.get(2) == 1) {
+          result = "락토오보";
+        } else {
+          // 그 외의 경우에는 현재 인덱스에 해당하는 유형으로 결과 설정
+          result = type[i];
+        }
+      }
     }
 
-    return null;
-  }
-
-  private void navigateToResultPage() {
-    // 여기에서 결과 페이지로 이동하는 로직을 추가하면 됩니다.
-    // 예: Spring MVC에서는 Controller를 호출하여 결과 페이지로 이동할 수 있습니다.
-    // ModelAndView mav = new ModelAndView("resultPage");
-    // mav.addObject("result", getResult());
-    // return mav;
-  }
-
-  public void saveQuizResultType(Principal principal, String quizResultType) {
-    SiteUser user = userService.getUser(principal.getName());
-
-    if (user != null) {
-      user.setQuizResultType(quizResultType);
-      userRepository.save(user);
-    }
+    // 최종 결과 반환
+    return result;
   }
 }

@@ -15,12 +15,13 @@ public class UserService {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
 
-  public SiteUser create(String name, String username, String password) throws SignupUsernameDuplicatedException {
+  public SiteUser create(String name, String username, String password, String allergies) throws SignupUsernameDuplicatedException {
     SiteUser user = new SiteUser();
     user.setName(name);
     user.setUsername(username);
     user.setPassword(passwordEncoder.encode(password));
-//    user.setAllergy(allergy);
+    user.setAllergies(allergies);
+    user.setType("");
 
     try {
       userRepository.save(user);

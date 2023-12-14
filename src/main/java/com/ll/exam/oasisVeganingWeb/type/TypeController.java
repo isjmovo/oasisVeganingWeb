@@ -1,6 +1,10 @@
 package com.ll.exam.oasisVeganingWeb.type;
 
+import com.ll.exam.oasisVeganingWeb.user.SiteUser;
+import com.ll.exam.oasisVeganingWeb.user.UserRepository;
+import com.ll.exam.oasisVeganingWeb.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,50 +12,50 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/type")
 public class TypeController {
+
   @Autowired
   private TypeService typeService;
+  @Autowired
+  private UserService userService;
+  private UserRepository userRepository;
 
+  // 현재 진행 중인 질문 번호를 저장하는 변수
+  private int currentQuestionIndex = 0;
+
+  @PreAuthorize("isAuthenticated()")
   @GetMapping("/test")
-  public String showQuiz(Model model) {
-    Question currentQuestion = typeService.getCurrentQuestion();
-
-    if (currentQuestion == null) {
-      // 모든 질문이 끝났을 때 결과 페이지로 이동
-      return navigateToResultPage(model);
-    }
-
-    model.addAttribute("question", currentQuestion);
+  public String showTypeQuiz(Model model) {
+    String currentQuestion = typeService.getQuestion(currentQuestionIndex);
+    model.addAttribute("currentQuestion", currentQuestion);
     return "test_form";
   }
 
+  @PreAuthorize("isAuthenticated()")
   @PostMapping("/test")
-  public String processAnswer(@RequestParam("userAnswer") int userAnswer, Model model) {
-    typeService.recordUserAnswer(userAnswer);
+  public String processTypeQuiz(@RequestParam("answer") int answer, Model model, Principal principal) {
+    // 사용자의 답을 처리
+    typeService.processAnswer(currentQuestionIndex, answer);
 
-    // 모든 질문이 끝났을 때 결과 페이지로 이동
-    if (typeService.getCurrentQuestion() == null) {
-      return navigateToResultPage(model);
+    // 모든 질문에 대한 답을 받았으면 결과를 보여줌
+    if (currentQuestionIndex + 1 == typeService.getTotalQuestions()) {
+      String result = typeService.calculateResult();
+      model.addAttribute("result", result);
+
+      // 사용자 엔티티에 결과 저장
+      SiteUser user = userService.getUser(principal.getName());
+      user.setType(result);
+
+      return "typeResult";
     }
 
-    return "redirect:/type/test"; // 다음 질문으로 이동
-  }
+    // 다음 질문으로 진행
+    currentQuestionIndex++;
 
-  @GetMapping("/result")
-  public String showResult(Model model) {
-    Type result = typeService.getResult();
-
-    // 결과 및 결과 설명을 모델에 추가
-    model.addAttribute("result", result);
-    model.addAttribute("resultDescription", result.getDescription());
-
-    return "typeResult"; // 결과 페이지 템플릿으로 이동
-  }
-
-  private String navigateToResultPage(Model model) {
-    // 결과 페이지로 이동하는 로직 추가
-    return "redirect:/type/result";
+    return "redirect:/type/test";
   }
 }

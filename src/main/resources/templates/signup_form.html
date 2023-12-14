@@ -24,14 +24,9 @@
             <label class="form-label tts">비밀번호 확인<span class="text-danger">*</span></label>
             <input type="password" th:field="*{password2}" class="form-control" style="background-color: #FFFFFF;">
         </div>
-        <div class="mb-3" id="allergies-container">
-            <label class="form-label tts">알레르기 정보</label>
-            <div class="input-group">
-                <input type="text" name="allergies[]" class="form-control" style="background-color: #FFFFFF;">
-                <div class="input-group-append">
-                    <button type="button" class="btn btn-outline-secondary" onclick="addAllergyField()">추가</button>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label class="form-label tts">알러지 정보</label>
+            <input type="text" th:field="*{allergies}" class="form-control" style="background-color: #FFFFFF;">
         </div>
 
         <label class="form-label text-danger tts">*는 필수 정보입니다.</label>

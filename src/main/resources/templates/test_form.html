@@ -6,11 +6,19 @@
             <h2>성향 테스트</h2>
         </div>
         <div class="card-body">
-
-            <form th:action="@{/type/test}" th:object="${question}" method="post">
-                <p class="tts" th:text="${question.questionText}"></p>
-                <button type="submit" class="btn btn-success tts" name="userAnswer" th:value="${1}">O</button>
-                <button type="submit" class="btn btn-danger tts" name="userAnswer" th:value="${0}">X</button>
+    
+            <form th:action="@{/type/test}" method="post">
+        
+                <!-- 현재 질문 표시 -->
+                <p th:text="${currentQuestion}" class="tts"></p>
+        
+                <div class="form-group">
+                    <!-- O(1) 버튼 -->
+                    <button type="submit" class="btn btn-success tts" name="answer" value="1">O</button>
+        
+                    <!-- X(0) 버튼 -->
+                    <button type="submit" class="btn btn-danger tts" name="answer" value="0">X</button>
+                </div>
             </form>
         </div>
     </div>
