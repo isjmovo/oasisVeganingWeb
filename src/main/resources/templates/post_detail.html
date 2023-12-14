@@ -37,7 +37,7 @@
         </div>
     </div>
     <!-- 답글의 갯수 표시 -->
-    <h5 class="border-bottom my-3 py-2 tts" th:text="|${#lists.size(myPost.commentList)}개의 답변이 있습니다.|"></h5>
+    <h5 class="border-bottom my-3 py-2 tts" th:text="|${#lists.size(myPost.commentList)}개의 답글이 있습니다.|"></h5>
 
     <!-- 답글 반복 시작 -->
     <div class="card my-3 tts" th:each="comment : ${myPost.commentList}">
@@ -53,7 +53,7 @@
 
                 <div class="badge bg-light text-dark p-2 text-start">
                     <div class="mb-2">
-                        <span th:text="${myPost.author?.username}"></span>
+                        <span th:text="${comment.author?.username}"></span>
                     </div>
                     <div th:text="${#temporals.format(comment.createDate, 'yyyy-MM-dd HH:mm')}"></div>
                 </div>

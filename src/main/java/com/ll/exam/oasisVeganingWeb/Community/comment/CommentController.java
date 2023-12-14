@@ -31,15 +31,14 @@ public class CommentController {
 
     if (bindingResult.hasErrors()) {
       model.addAttribute("myPost", myPost);
-
       return "post_detail";
     }
 
     SiteUser siteUser = userService.getUser(principal.getName());
 
-    commentService.create(myPost, commentForm.getContent(), siteUser);
+    Comment comment = commentService.create(myPost, commentForm.getContent(), siteUser);
 
-    return "redirect:/community/detail/%d".formatted(id);
+    return "redirect:/community/detail/%d#comment_id".formatted(id, comment.getId());
   }
 
   @PreAuthorize("isAuthenticated()")

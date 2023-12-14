@@ -1,11 +1,14 @@
 package com.ll.exam.oasisVeganingWeb.user;
 
+import com.ll.exam.oasisVeganingWeb.Community.myPost.MyPost;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,9 +30,15 @@ public class SiteUser {
   @NotNull
   private String password;
 
+  @ElementCollection
+  private List<String> allergies;
+
   private String quizResultType;
 
   public SiteUser(long id) {
     this.id = id;
   }
+
+  @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+  private List<MyPost> myPosts;
 }

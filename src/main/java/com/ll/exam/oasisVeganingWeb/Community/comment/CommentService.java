@@ -13,13 +13,14 @@ import java.time.LocalDateTime;
 public class CommentService {
   private final CommentRepository commentRepository;
 
-  public void create(MyPost myPost, String content, SiteUser author) {
+  public Comment create(MyPost myPost, String content, SiteUser author) {
     Comment comment = new Comment();
     comment.setContent(content);
     comment.setCreateDate(LocalDateTime.now());
     comment.setAuthor(author);
     myPost.addComment(comment);
     commentRepository.save(comment);
+    return comment;
   }
 
   public Comment getComment(Long id) {

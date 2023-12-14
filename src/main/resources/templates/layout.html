@@ -57,6 +57,36 @@
                 });
             });
         });
+
+
+        // 알레르기 입력 폼
+        function addAllergyField() {
+        var container = document.getElementById('allergies-container');
+        var inputGroup = document.createElement('div');
+        inputGroup.classList.add('input-group', 'mb-3');
+
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'allergies[]';
+        input.classList.add('form-control');
+        input.style.backgroundColor = '#FFFFFF';
+
+        var buttonGroup = document.createElement('div');
+        buttonGroup.classList.add('input-group-append');
+
+        var addButton = document.createElement('button');
+        addButton.type = 'button';
+        addButton.classList.add('btn', 'btn-outline-secondary');
+        addButton.textContent = '추가';
+        addButton.addEventListener('click', addAllergyField);
+
+        buttonGroup.appendChild(addButton);
+
+        inputGroup.appendChild(input);
+        inputGroup.appendChild(buttonGroup);
+
+        container.appendChild(inputGroup);
+    }
     </script>
 
     <th:block layout:fragment="script"></th:block>

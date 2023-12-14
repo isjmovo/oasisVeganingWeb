@@ -11,7 +11,7 @@ public class UserCreateForm {
   @NotEmpty(message = "이름은 필수 항목입니다.")
   private String name;
 
-  @NotEmpty(message = "사용자 ID는 필수 항목입니다.")
+  @NotEmpty(message = "아이디는 필수 항목입니다.")
   @Email(message = "올바른 이메일 형식으로 입력해주세요.")
   private String username;
 
@@ -20,6 +20,4 @@ public class UserCreateForm {
 
   @NotEmpty(message = "비밀번호 확인은 필수 항목입니다.")
   private String password2;
-
-//  private String allergy;
 }

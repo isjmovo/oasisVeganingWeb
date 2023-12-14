@@ -2,6 +2,7 @@ package com.ll.exam.oasisVeganingWeb.Community.myPost;
 
 import com.ll.exam.oasisVeganingWeb.exception.DataNotFoundException;
 import com.ll.exam.oasisVeganingWeb.user.SiteUser;
+import com.ll.exam.oasisVeganingWeb.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
   private final PostRepository postRepository;
+  private final UserRepository userRepository;
 
 //  @Autowired
 //  private AmazonS3 amazonS3; // 이미지를 S3에 업로드하기 위한 클라이언트
@@ -53,5 +55,12 @@ public class PostService {
 
   public void delete (MyPost myPost) {
     this.postRepository.delete(myPost);
+  }
+
+  public List<MyPost> getMyPostsByUsername(String username) {
+    SiteUser user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new DataNotFoundException("사용자를 찾을 수 없습니다."));
+
+    return user.getMyPosts();
   }
 }

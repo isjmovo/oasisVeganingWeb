@@ -1,75 +1,57 @@
 package com.ll.exam.oasisVeganingWeb.ocr;
 
+import com.ll.exam.oasisVeganingWeb.img.ImageService;
+import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.TesseractException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/check")
+@RequestMapping("/ocr")
 public class OcrController {
 
-  @GetMapping("/perform-ocr")
-  public String showOcrForm(Model model) {
-    model.addAttribute("resultText", ""); // 초기 로드 시 resultText를 비움
-    return "ocr_form"; // Thymeleaf 템플릿 파일 이름
-  }
+  @Autowired
+  private ImageService imageService;
 
-  @PostMapping("/perform-ocr")
-  public String performOcr(@RequestParam("file") MultipartFile file, Model model) {
-    String resultText = "";
-
-    // 파일 정보 출력 (디버깅 목적)
-    System.out.println("Original File Name: " + file.getOriginalFilename());
-    System.out.println("File Size: " + file.getSize() + " bytes");
-    System.out.println("Content Type: " + file.getContentType());
+  @PostMapping("/upload")
+  public ModelAndView handleFileUpload(@RequestParam("file") MultipartFile file) {
+    ModelAndView modelAndView = new ModelAndView("result");
 
     if (!file.isEmpty()) {
       try {
-        File imageFile = convertMultipartFileToFile(file);
+        String fileName = imageService.uploadImage(file);
+        File imageFile = new File(fileName);
 
-        if (imageFile.exists() && isImageFile(imageFile)) {
-          Tesseract tesseract = new Tesseract();
-
-          BufferedImage bufferedImage = ImageIO.read(imageFile);
-          resultText = tesseract.doOCR(bufferedImage);
-
-          imageFile.delete();
-        } else {
-          resultText = "올바른 이미지 파일이 아닙니다.";
-        }
-      } catch (IOException | TesseractException e) {
+        String extractedText = performOCR(imageFile);
+        modelAndView.addObject("result", extractedText);
+      } catch (IOException e) {
+        modelAndView.addObject("error", "Error processing the uploaded file.");
         e.printStackTrace();
-        resultText = "OCR 처리 중 오류가 발생했습니다.";
       }
+    } else {
+      modelAndView.addObject("error", "Please upload a file.");
     }
 
-    model.addAttribute("resultText", resultText);
-    return "ocr_form"; // Thymeleaf 템플릿 파일 이름
+    return modelAndView;
   }
 
-  private boolean isImageFile(File file) {
+  private String performOCR(File imageFile) {
+    ITesseract tesseract = new Tesseract();
+    tesseract.setDatapath("path/to/tessdata"); // Tesseract의 데이터 경로 지정
+
     try {
-      BufferedImage bufferedImage = ImageIO.read(file);
-      return bufferedImage != null;
-    } catch (IOException e) {
-      return false;
+      return tesseract.doOCR(imageFile);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "Error extracting text from image.";
     }
-  }
-
-  private File convertMultipartFileToFile(MultipartFile file) throws IOException {
-    File convertedFile = new File(file.getOriginalFilename());
-    file.transferTo(convertedFile);
-    return convertedFile;
   }
 }
