@@ -57,15 +57,6 @@
                 });
             });
         });
-
-
-        function selectType(type, value) {
-        // 선택된 버튼에 'active' 클래스를 추가하고, 다른 버튼에서는 제거합니다.
-        document.querySelectorAll(`[name="${type}"]`).forEach(function (element) {
-            element.classList.remove('active');
-        });
-        document.querySelector(`[name="${type}"][value="${value}"]`).classList.add('active');
-    }
     </script>
 
     <th:block layout:fragment="script"></th:block>
