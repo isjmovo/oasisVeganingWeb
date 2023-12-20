@@ -24,4 +24,35 @@
 
 
 ### 페이지 및 기능
-![메인](./web%20mages/main.png)
+##### 메인
+![main](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/5bd2a7b6-1685-4902-aa5e-c2c5aefb04c4)
+
+##### 로그인
+![login](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/3fb65914-7a9c-4b2a-be47-64def1767b7b)
+
+##### 비건 판독
+![vegan01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/d5592c25-f24b-4cc6-920f-367bd341a501)
+![vegan02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/6e524ab7-8e9e-48d0-abea-ef291f472a8b)
+
+##### 제품 추천
+![recommend](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/0aaf44dd-608c-449a-b1ca-122e97e82715)
+
+##### 제품 검색
+![search](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/ed088e53-ef1d-40ee-a608-df14ddf58096)
+
+##### 회원가입
+![signup](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/22406f7c-6cf7-4416-ac4d-672a497331f2)
+
+##### 성향 테스트
+![test](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/758b7083-dec1-4ad9-9d7d-c2b3494c776a)
+![test-result](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/4b2c47db-f23a-437d-b8d3-433585242213)
+
+##### 나의 그린 기록 남기기
+![green01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/044aa3e3-40c5-426c-9119-3a89a8da4bf9)
+![green02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/ac80083f-8be6-4c22-8477-37d558ca0bbd)
+![green03](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/f1d0e61f-aaad-4959-8c7a-84bd09e20ad7)
+
+##### 레시피
+![recipe01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/55bdc3d9-355c-4ba7-91ef-2679429d8e46)
+![recipe02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/c71bc6ec-a750-4d78-b120-7778a762184c)
+![recipe03](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/2254c0bd-824c-4790-b924-eeb570b0aab4)
