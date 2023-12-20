@@ -21,3 +21,7 @@
 [![JPA](https://img.shields.io/badge/-JPA-007396?style=flat&logo=jpa&logoColor=white)](https://docs.oracle.com/javaee/7/api/javax/persistence/package-summary.html)
 [![HTML](https://img.shields.io/badge/-HTML-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=flat&logo=arduino&logoColor=white)](https://www.arduino.cc/)
+
+
+### 페이지 및 기능
+![메인](./web%20mages/main.png)
