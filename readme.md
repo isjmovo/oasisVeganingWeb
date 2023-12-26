@@ -60,58 +60,58 @@
 [프로젝트 소개](https://drive.google.com/drive/folders/1DYD4ktIantv1_TkoWncK5u0qZNbdiMNH)
 
 #### 메인
-메뉴 버튼 출력
-네비바 영역에는 다른 페이지로 이동 시 메인에 있던 메뉴들도 네비바에 함께 표시
-로그인 시 로그아웃 버튼 표시, 회원가입 버튼 숨겨짐
-로그아웃 시 로그인, 회원가입 버튼 표시시
+- 메뉴 버튼 출력
+- 네비바 영역에는 다른 페이지로 이동 시 메인에 있던 메뉴들도 네비바에 함께 표시
+- 로그인 시 로그아웃 버튼 표시, 회원가입 버튼 숨겨짐
+- 로그아웃 시 로그인, 회원가입 버튼 표시시
 
 ![main](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/5bd2a7b6-1685-4902-aa5e-c2c5aefb04c4)
 
 #### 로그인
-일반 로그인 방식과 카카오 로그인 방식
-로그인 정보 입력 오류 시 경고 메시지 출력
+- 일반 로그인 방식과 카카오 로그인 방식
+- 로그인 정보 입력 오류 시 경고 메시지 출력
 
 ![login](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/3fb65914-7a9c-4b2a-be47-64def1767b7b)
 
 #### 비건 판독
-스캐너를 통해 이미지 스캔 후 성분 분석 또는 이미지 업로드 방식을 통한 성분 분석을 통해 비건 판독
+- 스캐너를 통해 이미지 스캔 후 성분 분석 또는 이미지 업로드 방식을 통한 성분 분석을 통해 비건 판독
 
 ![vegan01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/d5592c25-f24b-4cc6-920f-367bd341a501)
 ![vegan02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/6e524ab7-8e9e-48d0-abea-ef291f472a8b)
 
 #### 제품 추천
-판독된 제품과의 유사도 계산을 통해 유사하거나 대체할 수 있는 비건 제품 추천
+- 판독된 제품과의 유사도 계산을 통해 유사하거나 대체할 수 있는 비건 제품 추천
 
 ![recommend](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/0aaf44dd-608c-449a-b1ca-122e97e82715)
 
 #### 제품 검색
-비건 제품을 검색할 수 있는 페이지
-검색어 미입력 시 모든 제품 출력
+- 비건 제품을 검색할 수 있는 페이지
+- 검색어 미입력 시 모든 제품 출력
 
 ![search](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/ed088e53-ef1d-40ee-a608-df14ddf58096)
 
 #### 회원가입
-회원가입 후 성향 테스트 페이지로 이동
-필수 입력 정보 미입력 시 경고 메시지 출력
+- 회원가입 후 성향 테스트 페이지로 이동
+- 필수 입력 정보 미입력 시 경고 메시지 출력
 
 ![signup](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/22406f7c-6cf7-4416-ac4d-672a497331f2)
 
 #### 성향 테스트
-성향 테스트 진행 후 이용자의 비건 단계 결과 출력
+- 성향 테스트 진행 후 이용자의 비건 단계 결과 출력
 
 ![test](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/758b7083-dec1-4ad9-9d7d-c2b3494c776a)
 ![test-result](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/4b2c47db-f23a-437d-b8d3-433585242213)
 
 #### 나의 그린 기록 남기기
-커뮤니티 기능을 도입하여 이용자들 사이의 비건 실천 동기 부여 촉구(CRUD)
-답글 기능 도입
+- 커뮤니티 기능을 도입하여 이용자들 사이의 비건 실천 동기 부여 촉구(CRUD)
+- 답글 기능 도입
 
 ![green01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/044aa3e3-40c5-426c-9119-3a89a8da4bf9)
 ![green02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/ac80083f-8be6-4c22-8477-37d558ca0bbd)
 ![green03](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/f1d0e61f-aaad-4959-8c7a-84bd09e20ad7)
 
 ##### 레시피
-비건 레시피 게시판 기능(CRUD)
+- 비건 레시피 게시판 기능(CRUD)
 
 ![recipe01](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/55bdc3d9-355c-4ba7-91ef-2679429d8e46)
 ![recipe02](https://github.com/isjmovo/oasisVeganingWeb/assets/108575233/c71bc6ec-a750-4d78-b120-7778a762184c)
