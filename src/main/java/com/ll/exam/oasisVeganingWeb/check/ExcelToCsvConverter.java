@@ -1,11 +1,10 @@
 package com.ll.exam.oasisVeganingWeb.check;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -15,9 +14,6 @@ import java.io.IOException;
 
 @Component
 public class ExcelToCsvConverter {
-  @Value("${excel.file.path}") // 프로퍼티 파일에서 CSV 파일 경로 설정
-  private String excelFilePath;
-
   public void convertExcelToCsv(String excelFilePath, String csvFilePath) {
     try {
       // Excel 파일 읽기

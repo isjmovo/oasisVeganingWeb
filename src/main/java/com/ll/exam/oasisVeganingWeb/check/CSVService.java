@@ -19,6 +19,9 @@ public class CSVService {
   @Value("${csv.file.path}")
   private String csvFilePath;
 
+  @Value("${excel.file.path}")
+  private String excelFilePath;
+
   public String readCSVData() throws IOException, CsvException {
     List<String[]> rows = null;
 
@@ -27,6 +30,19 @@ public class CSVService {
 
     } catch (IOException e) {
       e.printStackTrace();
+
+      // CSV 파일이 없을 경우 ExcelToCsvConverter를 실행하여 CSV 생성
+      System.out.println("CSV 파일을 찾을 수 없습니다. ExcelToCsvConverter를 실행합니다...");
+      ExcelToCsvConverter converter = new ExcelToCsvConverter();
+      converter.convertExcelToCsv(excelFilePath, csvFilePath);
+
+      // 재시도: 생성된 CSV 파일 읽기
+      try (CSVReader csvReaderRetry = new CSVReaderBuilder(new FileReader(csvFilePath)).withSkipLines(1).build()) {
+        rows = csvReaderRetry.readAll();
+      } catch (IOException ex) {
+        ex.printStackTrace();
+        throw ex; // 예외 처리 필요
+      }
     }
 
     // CSV 데이터를 읽어와서 문자열로 변환
@@ -38,5 +54,11 @@ public class CSVService {
     }
 
     return csvData.toString();
+  }
+
+  // ExcelToCsvConverter 실행 메서드 추가
+  public void convertExcelToCSV() {
+    ExcelToCsvConverter converter = new ExcelToCsvConverter();
+    converter.convertExcelToCsv(excelFilePath, csvFilePath);
   }
 }
